@@ -10,7 +10,7 @@ describe('TEST CROSS CHAIN BRIDGE',function()
 
     it('Cross Chain Bridge',function(){
         cy.visit_Polkalokr()
-        //cy.Connect_Wallet_MetaMask()
+        cy.Connect_Wallet_MetaMask()
         cy.visit_Manage_Bridge('erc2')
 
     })
