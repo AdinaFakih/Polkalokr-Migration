@@ -37,10 +37,11 @@ Cypress.Commands.add('Manage_Bridge', (Bridge_Name) => {
     // })
 })
 
-Cypress.Commands.add('Cross_Chain_Bridge', (acc_address, amount) => {
+Cypress.Commands.add('Cross_Chain_Bridge', (acc_address, amount, approve) => {
     cy.wait(2000)
     // Click on logo to navigate to cross chain bridge
-    cy.get('.jss10 > a').should('be.visible').click()
+    //cy.get('.jss10 > a').should('be.visible').click()
+    cy.get('[href="/bridge/test1"] > img').should('be.visible').click()
     cy.url().should('include', 'bridge')
     cy.contains('Cross-Chain Bridge').should('be.visible')
     cy.wait(1000)
@@ -63,6 +64,12 @@ Cypress.Commands.add('Cross_Chain_Bridge', (acc_address, amount) => {
         // Click on "MAX" button
         cy.get('.MuiInputAdornment-root > .MuiButtonBase-root > .MuiButton-label').click()
         cy.wait(1000)
+    }
+    if(approve === true){
+        //Approve Send
+        cy.get('.MuiButton-label > div').click()
+        //CONFIRM FROM METAMASK MANUALLY
+        cy.wait(2000)
     }
     //Click on "confirm send" button
     cy.get('.MuiButton-label > span').click()
@@ -91,16 +98,10 @@ Cypress.Commands.add('Cross_Chain_Bridge', (acc_address, amount) => {
     //     }
     // })
 
-//     let bridge_links = '//*[@id="simple-menu"]/div[3]/ul/a'
-//     cy.xpath(bridge_links).its('length').then((len)=> {
-//         cy.log('lENGTH IS ', len)
-//         while (len !== 0){
-//             cy.xpath(bridge_links).eq(len - 1).invoke('text').then((textt)=> {
-//             cy.log(textt)
-//             if(textt === Bridge_Name){ 
-//                 cy.xpath(bridge_links +len ).click() 
-//                 break;
-//             }
-//             })
-//         len--
-//         }
+    Cypress.Commands.add('Add_Chain', () => {
+        cy.contains('Add chain').should('be.visible').click()
+    })
+
+    Cypress.Commands.add('Edit_Chain', () => {
+        cy.contains('Edit a chain').should('be.visible').click()
+    })
