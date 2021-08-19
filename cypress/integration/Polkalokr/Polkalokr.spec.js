@@ -9,11 +9,17 @@ describe('TEST BRIDGE',function()
     })
 
     it('Running Automation Scripts',function(){
-        
+
         cy.visit_Polkalokr()
         cy.Connect_Wallet_MetaMask()
-        cy.Manage_Bridge('erc2')
-        cy.Cross_Chain_Bridge()
+        // enter bridge name you want to navigate to 
+        cy.Manage_Bridge('e2b')
+        /* if you want to send to another address, enter account address,
+           else enter '0' to click on Source Address */
+        /* Enter the amount you want to transfer
+           else enter '0' to click on "Max" button */
+        //                   (wallet address, amount)
+        cy.Cross_Chain_Bridge(0, 10)
 
     })
 })
