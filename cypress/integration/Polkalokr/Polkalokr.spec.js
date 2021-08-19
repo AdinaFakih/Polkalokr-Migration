@@ -1,5 +1,5 @@
 
-describe('TEST CROSS CHAIN BRIDGE',function()
+describe('TEST BRIDGE',function()
 {
     before(() => {
         // runs once before all tests in the block
@@ -8,10 +8,12 @@ describe('TEST CROSS CHAIN BRIDGE',function()
         })
     })
 
-    it('Cross Chain Bridge',function(){
+    it('Running Automation Scripts',function(){
+        
         cy.visit_Polkalokr()
         cy.Connect_Wallet_MetaMask()
-        cy.visit_Manage_Bridge('erc2')
+        cy.Manage_Bridge('erc2')
+        cy.Cross_Chain_Bridge()
 
     })
 })
